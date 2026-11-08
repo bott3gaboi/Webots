@@ -1,0 +1,126 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.5117468637265913 -0.5113967847305835 -0.6903538773942093 4.3493926744316544
+  position -0.038059908167883356 -0.6107900845920088 1.956006045347118
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+DEF EPUCK E-puck {
+  translation 0.369862 0.293008 -3.1981e-05
+  rotation 1.66992999998544e-06 3.8274599999666285e-06 0.999999999991281 -2.917865307179586
+  name "epuck"
+  controller "epuck_avoid_collision1"
+}
+Solid {
+  translation 0.437652 -0.127195 0.0495891
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 1
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "pink ball"
+  boundingObject USE BALL_GEOMETRY
+}
+Solid {
+  translation -0.446221 0.245009 0.0495891
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_SHAPE Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  name "ball(1)"
+  boundingObject USE BALL_SHAPE
+}
+Solid {
+  translation 0 -0.5 0.05
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 1 0.01 0.1
+      }
+    }
+  ]
+  name "woodenbox"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0 0.5 0.05
+  children [
+    USE WALL_SHAPE
+  ]
+  name "woodenbox(1)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation -0.5 0 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "woodenbox(2)"
+  boundingObject USE WALL_SHAPE
+}
+Solid {
+  translation 0.5 0 0.05
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "woodenbox(3)"
+  boundingObject USE WALL_SHAPE
+}
+Robot {
+  name "supervisor"
+  controller "experiment_logger"
+  supervisor TRUE
+}
+Solid {
+  translation 0.0154025 -0.00391275 -3.77476e-14
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 1 0
+        roughness 0.7
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  name "yellow box"
+}
